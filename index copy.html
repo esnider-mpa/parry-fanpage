@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perry the Platypus Fan Page</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        :root {
+            --primary-color: rgb(43, 155, 140);
+            --secondary-color: rgb(201, 137, 5);
+            --dark-color: #333;
+            --light-color: #fff;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: rgb(30, 100, 90);
+            --secondary-color: rgb(150, 100, 0);
+            --dark-color: #222;
+            --light-color: #eee;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--primary-color);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: var(--light-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-menu {
+            background-color: var(--dark-color);
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-menu a {
+            color: var(--light-color);
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--secondary-color);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--secondary-color);
+            color: var(--light-color);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background-color: var(--dark-color);
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: var(--light-color);
+            animation: slideDown 0.5s;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .content-section {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 15px;
+            animation: fadeIn 1s;
+        }
+
+        .section-heading {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 25px 0 15px 0;
+            transition: transform 0.3s;
+        }
+
+        .section-heading:hover {
+            transform: scale(1.02);
+        }
+
+        .sub-heading {
+            background-color: var(--secondary-color);
+            color: black;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .perry-image {
+            max-width: 100%;
+            height: auto;
+            border: 3px solid var(--dark-color);
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .perry-image:hover {
+            transform: scale(1.02);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: var(--secondary-color);
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: var(--dark-color);
+        }
+
+        .fact-list {
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .fact-list li {
+            margin-bottom: 8px;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        .github-link {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .github-link:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 600px) {
+            .nav-menu {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-menu a {
+                margin: 5px 0;
+            }
+
+            header {
+                font-size: 24px;
+                padding: 15px;
+            }
+
+            .content-section {
+                padding: 10px;
+            }
+        }
+  </style>
+</head>
+<body>
+    <nav class="nav-menu">
+        <a href="#about">About Perry</a>
+        <a href="#stats">Stats</a>
+        <a href="#facts">Fun Facts</a>
+        <a href="#gallery">Gallery</a>
+    </nav>
+
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <header>
+        <h1>Perry the Platypus Fan Page</h1>
+    </header>
+
+    <div class="content-section" id="about">
+        <h2 class="section-heading">Not the hero we want but the hero we need</h2>
+        
+        <img class="perry-image" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c9e73c95-4dca-4e52-b88a-e14b62de5a1e/d2sxxfe-15d348e4-ea5a-4fe5-987c-1b6a7fd75272.jpg/v1/fill/w_560,h_350,q_70,strp/perry_the_platypus_by_jikujiku_d2sxxfe-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTYzIiwicGF0aCI6IlwvZlwvYzllNzNjOTUtNGRjYS00ZTUyLWI4OGEtZTE0YjYyZGU1YTFlXC9kMnN4eGZlLTE1ZDM0OGU0LWVhNWEtNGZlNS05ODdjLTFiNmE3ZmQ3NTI3Mi5qcGciLCJ3aWR0aCI6Ijw9OTAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.hMBCxrqxyqQQ-umVGIzhkOn5VAifyg5X-7QKr6HPe4g" alt="Perry the Platypus" loading="lazy">
+
+        <h2 class="section-heading" id="stats">By day just an ordinary platypus</h2>
+        <h3 class="sub-heading">Stats:</h3>
+
+        <table>
+            <tr>
+                <th>Height</th>
+                <th>Gender</th>
+                <th>Family</th>
+                <th>Owners</th>
+            </tr>
+            <tr>
+                <td>2 ft</td>
+                <td>Male</td>
+                <td>Platypus</td>
+                <td>Phineas and Ferb</td>
+            </tr>
+        </table>
+
+        <div class="fact-list" id="facts">
+            <h3>Fun Facts About Perry:</h3>
+            <ul>
+                <li>His catchphrase sound is a chattering "Krkrkrkr"</li>
+                <li>Works for the O.W.C.A. (Organization Without a Cool Acronym)</li>
+                <li>His nemesis is Dr. Heinz Doofenshmirtz</li>
+                <li>Wears a fedora when in agent mode</li>
+                <li>Enters his secret lair through various hidden entrances</li>
+            </ul>
+        </div>
+
+        <h2 class="section-heading">Also Known As</h2>
+        <h2 class="section-heading">Agent P</h2>
+
+        <div id="gallery">
+            <img class="perry-image" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ffc09.deviantart.net%2Ffs71%2Ff%2F2012%2F348%2F9%2F3%2Fblack_tie_agent_p__animated__by_jaycasey-d5nzqga.gif&amp;f=1&amp;nofb=1&amp;ipt=cfe55370fca21d64c15831dd984afd3b8c1dfa0e56ec14be6765bdfa23a3d2d0" alt="Perry the Platypus in Agent Mode" loading="lazy">
+
+            <h2 class="section-heading">Perry in Disguise</h2>
+            <img class="perry-image" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F3.bp.blogspot.com%2F-ivXrYulIvSE%2FTcabu4ArrVI%2FAAAAAAAAAt4%2F5ReGx6Kgq00%2Fs1600%2F653px-Perry_Platypus_Plumber.jpg&amp;f=1&amp;nofb=1&amp;ipt=3e49835caa98a6d910996c86090a1b604f196a281e70086610bd3b2b2933a717" alt="Perry the Platypus in Plumber Disguise" loading="lazy">
+        </div>
+    </div>
+
+    <footer>
+        <p>2025 Perry the Platypus Fan Club</p>
+        <p>:)</p>
+        <p><a href="https://github.com/esnider25" class="github-link" target="_blank">View on GitHub</a></p>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.setAttribute('data-theme', savedTheme);
+        }
+
+        // Back to top button functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
