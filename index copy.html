@@ -115,7 +115,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             backdrop-filter: blur(5px);
         }
@@ -287,15 +287,89 @@
             }
 
             header {
-                font-size: 24px;
-                padding: 15px;
+                height: 400px;
             }
 
             .content-section {
                 padding: 10px;
             }
         }
-  </style>
+
+        /* Animation Container Styles
+         * This creates a container for the OpenProcessing animation
+         * - width: 100% makes it responsive
+         * - max-width: 800px ensures it doesn't get too wide on large screens
+         * - margin: 30px auto centers the container
+         * - padding: 20px gives space around the animation
+         * - background: semi-transparent white background
+         * - border-radius: rounded corners
+         * - box-shadow: subtle shadow for depth
+         */
+        .animation-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation iframe Styles
+         * This styles the iframe that contains the OpenProcessing animation
+         * - width: 100% makes it fill the container
+         * - height: 500px sets a fixed height for the animation
+         * - border: none removes the default iframe border
+         * - border-radius: matches the container's rounded corners
+         */
+        .animation-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 10px;
+            background-color: var(--dark-color); /* Fallback background */
+        }
+
+        .animation-loading {
+            text-align: center;
+            padding: 20px;
+            color: var(--light-color);
+        }
+
+        .attribution {
+            font-size: 0.8em;
+            color: var(--light-color);
+            margin-top: 10px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .attribution a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .attribution a:hover {
+            text-decoration: underline;
+        }
+
+        .header-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-color: var(--dark-color);
+        }
+
+        .header-animation iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <nav class="nav-menu">
@@ -356,7 +430,23 @@
             <img class="perry-image" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ffc09.deviantart.net%2Ffs71%2Ff%2F2012%2F348%2F9%2F3%2Fblack_tie_agent_p__animated__by_jaycasey-d5nzqga.gif&amp;f=1&amp;nofb=1&amp;ipt=cfe55370fca21d64c15831dd984afd3b8c1dfa0e56ec14be6765bdfa23a3d2d0" alt="Perry the Platypus in Agent Mode" loading="lazy">
 
             <h2 class="section-heading">Perry in Disguise</h2>
-            <img class="perry-image" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F3.bp.blogspot.com%2F-ivXrYulIvSE%2FTcabu4ArrVI%2FAAAAAAAAAt4%2F5ReGx6Kgq00%2Fs1600%2F653px-Perry_Platypus_Plumber.jpg&amp;f=1&amp;nofb=1&amp;ipt=3e49835caa98a6d910996c86090a1b604f196a281e70086610bd3b2b2933a717" alt="Perry the Platypus in Plumber Disguise" loading="lazy">
+            <img class="perry-image" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F3.bp.blogspot.com%2F-ivXrYulIvSE%2FTcabu4ArrVI%2FAAAAAAAAAt4%2F5ReGx6Kgq00%2Fs1600%2F653px-Perry_Platypus_Plumber.jpg&amp;f=1&amp;nofb=1&amp;ipt=3e49835caa98a6d910996c86090a19604f196a281e70086610bd3b2b2933a717" alt="Perry the Platypus in Plumber Disguise" loading="lazy">
+        </div>
+
+        <div class="animation-container">
+            <h2 class="section-heading">Interactive Perry Animation</h2>
+            <div class="animation-loading">Loading animation...</div>
+            <iframe 
+                src="animation/index.html" 
+                allowfullscreen
+                sandbox="allow-scripts allow-same-origin allow-popups"
+                referrerpolicy="no-referrer"
+            ></iframe>
+            <div class="attribution">
+                "Perry the Platypus Extended" by <a href="https://openprocessing.org/user/966162" target="_blank">Skallywagger</a>
+                <br>
+                License: <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank">CreativeCommons Attribution ShareAlike</a>
+            </div>
         </div>
     </div>
 
