@@ -3,39 +3,32 @@ var value = 1;
 var count = 0;
 var maxFrames = 20;
 
-function setup() 
-{
-	createCanvas(600,600);
-	
-	x = width / 2
-  y = height / 2
+// STAR from example - https://p5js.org/examples/form-star.html
+function star(x, y, radius1, radius2, npoints) {
+	let angle = TWO_PI / npoints;
+	let halfAngle = angle / 2.0;
+	beginShape();
+	for (let a = 0; a < TWO_PI; a += angle) {
+		let sx = x + cos(a) * radius2;
+		let sy = y + sin(a) * radius2;
+		vertex(sx, sy);
+		sx = x + cos(a + halfAngle) * radius1;
+		sy = y + sin(a + halfAngle) * radius1;
+		vertex(sx, sy);
+	}
+	endShape(CLOSE);
 }
 
-function draw() 
-{
-	background(100);
-	ellipse(mouseX, mouseY, 20, 20);
-	explosionFrame();
-	
-	count++;
-
-	
-	//From Example: Explosions - https://www.openprocessing.org/sketch/985888
-	function explosionFrame()
-	{
-		if (mouseIsPressed == true)
-		{
+function explosionFrame() {
+	if (mouseIsPressed) {
 		push();
-	
 		// Set some random value to make the explosion look "shaky"
-		let r1 = random(int(value));
-		let r2 = random(int(value));
-		let r3 = random(int(value));
-		let r4 = random(int(value));
-		translate(r1 - r2 + width/2,r3 - r4 + height/2); // Move the origin of your temporary grid (matrix) 
-	
+		let r1 = random(Math.floor(value));
+		let r2 = random(Math.floor(value));
+		let r3 = random(Math.floor(value));
+		let r4 = random(Math.floor(value));
+		translate(r1 - r2 + width/2, r3 - r4 + height/2);
 
-	
 		// Draw the explosion at the origin
 		noStroke();
 		fill("#ff0000");
@@ -44,35 +37,24 @@ function draw()
 		star(0, 0, 60, 105, 18);
 		fill("#ffff00");
 		star(0, 0, 30, 75, 16);
-	
 		pop();
-		}
 	}
+}
 
-// STAR from example - https://p5js.org/examples/form-star.html
-	function star(x, y, radius1, radius2, npoints) 
-	{
-			if (mouseIsPressed == true)
-			{
-			let angle = TWO_PI / npoints;
-			let halfAngle = angle / 2.0;
-			beginShape();
-				for (let a = 0; a < TWO_PI; a += angle) 
-				{
-					let sx = x + cos(a) * radius2;
-					let sy = y + sin(a) * radius2;
-					vertex(sx, sy);
-					sx = x + cos(a + halfAngle) * radius1;
-					sy = y + sin(a + halfAngle) * radius1;
-					vertex(sx, sy);
-				}
-			endShape(CLOSE);
-			}
+function setup() {
+	createCanvas(600, 600);
+	x = width / 2;
+	y = height / 2;
+}
 
-	}
+function draw() {
+	background(100);
+	ellipse(mouseX, mouseY, 20, 20);
+	explosionFrame();
 	
+	count++;
+
 	//body outline
-	
 	//insideColor
 	fill(106,172.99,181.99);
 	stroke(106,172.99,181.99);
@@ -150,7 +132,7 @@ function draw()
 	bezier(228,385,230,420,225,407,218,409);
 	fill(106,172.99,181.99);
 	bezier(218,409,214,414,216,417,218,418);
-  bezier(218,418,220,420,224,420,226,420);
+	bezier(218,418,220,420,224,420,226,420);
 	bezier(226,420,229,419,232,418,235,416);
 	bezier(235,416,235,413,237,399,239,385);
 	bezier(239,385,240,380,242,375,244,370);
